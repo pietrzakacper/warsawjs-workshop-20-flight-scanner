@@ -49,7 +49,12 @@ class App extends React.Component {
 
   render() {
     if (this.state.view === "search") {
-      return (<SearchView onSearch={this.onSearch} searchData={this.state.searchData} airports={this.state.airports} />);
+      return (
+        <SearchView
+          onSearch={this.onSearch}
+          searchData={this.state.searchData}
+          airports={this.state.airports}
+        />);
     } else if (this.state.view === "flights") {
       return (<FlightsView searchData={this.state.searchData} goToSearch={this.goToSearch} />);
     }

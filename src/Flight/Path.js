@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import styles from "./Path.css";
 
@@ -22,7 +22,9 @@ const Path = ({ path }) => (
     <div className={styles.line} />
 
     <div className={styles.destination}>
-      <p className={styles.time}>{formatTime(path[path.length - 1].startHour + path[path.length - 1].length)}</p>
+      <p className={styles.time}>
+        {formatTime(path[path.length - 1].startHour + path[path.length - 1].length)}
+      </p>
       <p className={styles.airport}>{path[path.length - 1].airportTo}</p>
     </div>
   </div>
