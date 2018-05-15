@@ -13,7 +13,7 @@ class App extends React.Component {
       to: "ATL",
     },
     airports: [],
-    /*
+    // /*
     view: "search",
     /*/
     view: "flights",
