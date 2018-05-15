@@ -35,12 +35,12 @@
 }
 
 .transfer {
-  position: absolute;
   width: 4px;
   height: 4px;
   background: #fff;
   border: 3px solid #3D5AFE;
   border-radius: 50%;
+  z-index: 1;
 }
 
 .time {
