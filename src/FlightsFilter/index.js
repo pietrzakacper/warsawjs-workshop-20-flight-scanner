@@ -36,7 +36,7 @@ export default class FlightsFilter extends React.Component {
   changeTransfersFilter = () => {
     if (this.transfersToggle.current.checked) {
       this.filters.transfersFilter = flights =>
-        flights.filter(f => f.outboundPath.length <= +this.transfersNo.current.value + 1);
+        flights.filter(f => f.outboundPath.length <= +this.transfersNo.current.value + 1 && f.inboundPath.length <= +this.transfersNo.current.value + 1);
     } else {
       this.filters.transfersFilter = flights => flights;
     }
