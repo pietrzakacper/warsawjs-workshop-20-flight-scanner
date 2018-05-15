@@ -92,8 +92,8 @@ export default class FlightsFilter extends React.Component {
 ## Dla chętnych
 - [x] Pobieranie lotnisk z api
 - [ ] Wyświetlanie linii lotniczych (pobranie ich z api)
-- [ ] Sortowanie po innych wartościach
-- [ ] Wyświetlanie (ilości) przesiadek
+- [ ] Filtrowanie po innych wartościach
+- [x] Wyświetlanie (ilości) przesiadek
 - [ ] Sortowanie (po cenie, długości podróży)
 - [x] Ustawianie wartości pól w `<SeachView />` po powrocie do tego widoku
 

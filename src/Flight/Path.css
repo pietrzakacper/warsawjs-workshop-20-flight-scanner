@@ -14,20 +14,33 @@
 
 .line {
   display: flex;
+  position: relative;    
   align-items: center;
+  justify-content: space-around;
   width: 100%;
   flex: 1;
   padding: 0 16px;
   box-sizing: border-box;
 }
 
-.line::after {
+.line::before {
+  position: absolute;
   content: "";
+  left: 16px;
+  right: 16px;
   display: block;
   height: 3px;
   background: #3D5AFE;
-  width: 100%;
   border-radius: 2px;
+}
+
+.transfer {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border: 3px solid #3D5AFE;
+  border-radius: 50%;
 }
 
 .time {

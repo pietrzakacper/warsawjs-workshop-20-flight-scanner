@@ -19,7 +19,11 @@ const Path = ({ path }) => (
       <p className={styles.airport}>{path[0].airportFrom}</p>
     </div>
 
-    <div className={styles.line} />
+    <div className={styles.line}>
+      {new Array(path.length - 1).fill({}).map(i =>
+        (<div key={`${path}-${i}`} className={styles.transfer} />),
+      )}
+    </div>
 
     <div className={styles.destination}>
       <p className={styles.time}>

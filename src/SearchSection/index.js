@@ -17,7 +17,7 @@ export const SerachSectionSelect = ({
     <small><strong>{label}</strong></small>
     <select value={value} onChange={onChange}>
       <option value="" defaultValue>{label}</option>
-      { options.map((opt, i) => (<option key={`${label}-${i}`} value={opt.code}>{opt.city}</option>)) }
+      { options.map((opt, i) => (<option key={`${label}-${i}`} value={opt.code}>{opt.city} ({opt.country})</option>)) }
     </select>
   </label>
 );

@@ -13,7 +13,7 @@ class App extends React.Component {
       to: "ATL",
     },
     airports: [],
-    // /*
+    /*
     view: "search",
     /*/
     view: "flights",
@@ -29,6 +29,7 @@ class App extends React.Component {
         airports: result.map(r => ({
           code: r.code,
           city: r.city,
+          country: r.country,
         })),
       },
     );
