@@ -1,0 +1,3 @@
+{
+  "jest.pathToJest": "react-scripts test --env=jsdom"
+}

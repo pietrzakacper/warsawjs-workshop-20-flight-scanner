@@ -1,0 +1,40 @@
+.path {
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+
+.path:last-child {
+  margin-bottom: 0;
+}
+
+.path .destination:nth-child(3) {
+  text-align: right;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.line::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: #3D5AFE;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.time {
+  font-size: 24px;
+}
+
+.airport {
+  font-size: 16px;
+  color: #999;
+}

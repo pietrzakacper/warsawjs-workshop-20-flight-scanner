@@ -1,0 +1,20 @@
+:global body {
+  margin: 0;
+  margin-top: 56px;  
+  padding: 0;
+  font-family: sans-serif;
+  font-family: "Roboto";
+  background: #fdfdfd;
+}
+
+:global .btn {
+  padding: 8px 16px;
+  background: #3D5AFE;
+  border-radius: 2px;
+  font-family: "Roboto";
+  border: 0;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}

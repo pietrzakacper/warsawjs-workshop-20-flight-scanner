@@ -1,0 +1,15 @@
+.search {
+  margin: 0 auto;
+  max-width: 800px;
+  padding-top: 16px;
+}
+
+.searchFields {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.searchFields > * {
+  flex: 1;
+}

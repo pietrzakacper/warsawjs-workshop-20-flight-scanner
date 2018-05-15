@@ -1,0 +1,38 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  background: #3D5AFE;
+  padding: 0 32px;
+  box-sizing: border-box;
+  color: #fff;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.topbar button {
+  background: none;
+  border: 0;
+  padding: 0 16px;
+  font-family: "Roboto";
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 24px;
+  justify-self: end;
+  margin-left: auto;
+  overflow: hidden;  
+}
+
+.name i {
+  margin-right: .5em;
+  transform: rotate(-45deg);
+}
