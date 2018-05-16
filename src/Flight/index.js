@@ -5,13 +5,13 @@ import styles from "./Flight.css";
 
 const Flight = ({ flight }) => {
   const {
-    price, outboundPath, inboundPath,
+    price, outboundPath, inboundPath, id,
   } = flight;
   return (
     <div className={styles.flight}>
       <div className={styles.paths}>
-        <Path path={outboundPath} />
-        <Path path={inboundPath} />
+        <Path path={outboundPath} id={id} />
+        <Path path={inboundPath} id={id} />
       </div>
       <div className={styles.price}>${price}</div>
     </div>

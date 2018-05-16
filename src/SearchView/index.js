@@ -60,7 +60,9 @@ export default class SearchView extends React.Component {
       <Fragment>
         <TopBar />
         <form onSubmit={this.onSubmit} className={styles.search}>
-          <div className={styles.searchFields}>
+          <div className="field is-grouped" />
+
+          <div className="columns">
             <SerachSectionSelect label="From" options={options} value={this.state.from} onChange={this.onFromChange} />
             <SerachSectionSelect label="To" options={options} value={this.state.to} onChange={this.onToChange} />
 
@@ -68,7 +70,7 @@ export default class SearchView extends React.Component {
             <SerachSectionInput label="Return" type="date" value={this.state.return} onChange={this.onReturnChange} />
           </div>
 
-          <input type="submit" value="Search" className="btn" />
+          <input type="submit" value="Search" className="button is-link is-medium" />
         </form>
       </Fragment>
     );

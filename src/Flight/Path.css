@@ -41,6 +41,7 @@
   border: 3px solid #3D5AFE;
   border-radius: 50%;
   z-index: 1;
+  box-sizing: content-box;
 }
 
 .time {

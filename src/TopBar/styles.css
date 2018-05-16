@@ -1,20 +1,9 @@
-.topbar {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 56px;
+.navbar {
+  padding: 0 32px;  
   background: #3D5AFE;
-  padding: 0 32px;
-  box-sizing: border-box;
-  color: #fff;
-  z-index: 2;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.topbar button {
+.navbar button {
   background: none;
   border: 0;
   padding: 0 16px;
@@ -22,6 +11,11 @@
   font-size: 16px;
   color: #fff;
   cursor: pointer;
+}
+
+.brand {
+  align-items: center;
+  margin-left: auto;
 }
 
 .name {

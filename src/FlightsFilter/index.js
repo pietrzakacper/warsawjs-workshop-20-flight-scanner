@@ -36,7 +36,10 @@ export default class FlightsFilter extends React.Component {
   changeTransfersFilter = () => {
     if (this.transfersToggle.current.checked) {
       this.filters.transfersFilter = flights =>
-        flights.filter(f => f.outboundPath.length <= +this.transfersNo.current.value + 1 && f.inboundPath.length <= +this.transfersNo.current.value + 1);
+        flights.filter(f =>
+          f.outboundPath.length <= +this.transfersNo.current.value + 1 &&
+          f.inboundPath.length <= +this.transfersNo.current.value + 1,
+        );
     } else {
       this.filters.transfersFilter = flights => flights;
     }
@@ -54,13 +57,17 @@ export default class FlightsFilter extends React.Component {
               <input type="checkbox" ref={this.priceToggle} id="priceToggle" onChange={this.changePriceFilter} />
               <label htmlFor="priceToggle" />
             </div>
-            <div>
-              <strong>Min</strong>
-              <input type="number" ref={this.priceMin} onChange={this.changePriceFilter} min="0" defaultValue={0} />
+            <div className="field is-marginless">
+              <label className="label">Min</label>
+              <div className="control">
+                <input type="number" ref={this.priceMin} onChange={this.changePriceFilter} min="0" defaultValue={0} className="input is-small" />
+              </div>
             </div>
-            <div>
-              <strong>Max</strong>
-              <input type="number" ref={this.priceMax} onChange={this.changePriceFilter} defaultValue={0} />
+            <div className="field is-marginless">
+              <label className="label">Max</label>
+              <div className="control">
+                <input type="number" ref={this.priceMax} onChange={this.changePriceFilter} defaultValue={0} className="input is-small" />
+              </div>
             </div>
           </div>
         </div>
@@ -72,9 +79,12 @@ export default class FlightsFilter extends React.Component {
               <input type="checkbox" ref={this.transfersToggle} id="transfersToggle" onChange={this.changeTransfersFilter} />
               <label htmlFor="transfersToggle" />
             </div>
-            <div>
-              <strong>Max</strong>
-              <input type="number" ref={this.transfersNo} onChange={this.changeTransfersFilter} min="0" defaultValue={1} />
+
+            <div className="field is-marginless">
+              <label className="label">Max</label>
+              <div className="control">
+                <input type="number" ref={this.transfersNo} onChange={this.changeTransfersFilter} min="0" defaultValue={1} className="input is-small" />
+              </div>
             </div>
           </div>
         </div>

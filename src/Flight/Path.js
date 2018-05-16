@@ -12,7 +12,7 @@ const formatTime = (time) => {
   return `${hourString}:${minutesString}`;
 };
 
-const Path = ({ path }) => (
+const Path = ({ path, id }) => (
   <div className={styles.path}>
     <div className={styles.destination}>
       <p className={styles.time}>{formatTime(path[0].startHour)}</p>
@@ -20,8 +20,8 @@ const Path = ({ path }) => (
     </div>
 
     <div className={styles.line}>
-      {new Array(path.length - 1).fill({}).map(i =>
-        (<div key={`${path}-${i}`} className={styles.transfer} />),
+      {new Array(path.length - 1).fill({}).map((v, i) =>
+        (<div key={`${id}-${v.airportFrom}-${i}`} className={styles.transfer} />),
       )}
     </div>
 
