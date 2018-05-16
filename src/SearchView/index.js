@@ -5,13 +5,15 @@ import { SerachSectionInput, SerachSectionSelect } from "../SearchSection/";
 import styles from "./styles.css";
 
 export default class SearchView extends React.Component {
-  static getDerivedStateFromProps = ({ searchData }) => searchData;
-
-  state = {
-    to: "",
-    from: "",
-    depart: "",
-    return: "",
+  constructor({ searchData }) {
+    super();
+    this.state = {
+      to: "",
+      from: "",
+      depart: "",
+      return: "",
+      ...searchData,
+    };
   }
 
   onToChange = (e) => {

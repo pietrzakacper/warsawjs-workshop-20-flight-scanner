@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Flight from "../Flight";
 import TopBar from "../TopBar";
-import FlightsFiler from "../FlightsFilter";
+import FlightsFilter from "../FlightsFilter";
 
 import styles from "./styles.css";
 
@@ -43,7 +43,7 @@ export default class FlightsView extends React.Component {
           <button onClick={this.props.goToSearch}><i className="fas fa-chevron-left" /></button>
         </TopBar>
         <div className={styles.container}>
-          <FlightsFiler filterFlights={this.filterFlights} />
+          <FlightsFilter filterFlights={this.filterFlights} />
           <div className={styles.flights}>
             {flights}
           </div>
