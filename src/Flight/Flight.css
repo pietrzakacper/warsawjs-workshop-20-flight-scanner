@@ -13,6 +13,10 @@
   max-width: 600px;
 }
 
+.flight:last-child {
+  margin-bottom: 0;
+}
+
 .flight:hover {
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);

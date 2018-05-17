@@ -7,7 +7,7 @@ import FlightsView from "./FlightsView/";
 class App extends React.Component {
   state = {
     airports: [],
-    // /*
+    /*
     searchData: {},
     view: "search",
     /*/
@@ -58,7 +58,9 @@ class App extends React.Component {
           airports={this.state.airports}
         />);
     } else if (this.state.view === "flights") {
-      return (<FlightsView searchData={this.state.searchData} goToSearch={this.goToSearch} />);
+      return (
+        <FlightsView searchData={this.state.searchData} goToSearch={this.goToSearch} />
+      );
     }
 
     return null;
