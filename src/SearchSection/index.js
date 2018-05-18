@@ -1,6 +1,6 @@
-import React from "react";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
+import React from "react"
+import TextField from "@material-ui/core/TextField"
+import MenuItem from "@material-ui/core/MenuItem"
 
 export const SerachSectionInput = ({
   onChange, value, label, type = "text",
@@ -18,7 +18,7 @@ export const SerachSectionInput = ({
       margin="normal"
     />
   </div>
-);
+)
 
 export const SerachSectionSelect = ({
   onChange, value, label, options = [],
@@ -45,4 +45,4 @@ export const SerachSectionSelect = ({
       </TextField>
     </div>
   </div>
-);
+)

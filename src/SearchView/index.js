@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles"
 
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 
-import TopBar from "../TopBar/";
-import { SerachSectionInput, SerachSectionSelect } from "../SearchSection/";
+import TopBar from "../TopBar/"
+import { SerachSectionInput, SerachSectionSelect } from "../SearchSection/"
 
 const styles = theme => ({
   root: {
@@ -22,62 +22,39 @@ const styles = theme => ({
     maxWidth: 800,
     paddingTop: 16,
   },
-});
+})
 
 class SearchView extends React.Component {
-  constructor({ searchData }) {
-    super();
-    this.state = {
-      to: "",
-      from: "",
-      depart: "",
-      return: "",
-      ...searchData,
-    };
+  state = {
+      to: null,
+      from: null,
+      departDate: null,
+      returnDate: null
   }
 
-  onToChange = (e) => {
+  onChange = field => e => {
     this.setState({
-      to: e.target.value,
-    });
-  }
-
-  onFromChange = (e) => {
-    this.setState({
-      from: e.target.value,
-    });
-  }
-
-  onDepartChange = (e) => {
-    this.setState({
-      depart: e.target.value,
-    });
-  }
-
-  onReturnChange = (e) => {
-    this.setState({
-      return: e.target.value,
-    });
+      [field]: e.target.value
+    })
   }
 
   onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    const {to, from, departDate, returnDate} = this.state
 
-    if (!(this.state.to && this.state.from && this.state.depart && this.state.return)) {
-      return;
+    if (!(to && from && departDate && returnDate)) {
+      return
     }
 
     this.props.onSearch({
-      to: this.state.to,
-      from: this.state.from,
-      depart: this.state.depart,
-      return: this.state.return,
-    });
+      to, from, departDate, returnDate
+    })
   }
 
   render() {
-    const options = this.props.airports;
-    const { classes } = this.props;
+    const {airports} = this.props
+    const {classes} = this.props
+    const {from, to, departDate, returnDate} = this.state
 
     return (
       <div>
@@ -86,28 +63,37 @@ class SearchView extends React.Component {
         <form onSubmit={this.onSubmit} className={classes.search}>
           <div className="field is-grouped" />
 
-          <Grid container spacing={24}>
-            <Grid item xs={12} sm={3}>
-              <SerachSectionSelect label="From" options={options} value={this.state.from} onChange={this.onFromChange} />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <SerachSectionSelect label="To" options={options} value={this.state.to} onChange={this.onToChange} />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <SerachSectionInput label="Depart" type="date" value={this.state.depart} onChange={this.onDepartChange} />
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <SerachSectionInput label="Return" type="date" value={this.state.return} onChange={this.onReturnChange} />
-            </Grid>
-          </Grid>
+          <SerachSectionSelect
+            label="From"
+            options={airports} value={from || ''}
+            onChange={this.onChange('from')}
+          />
+          <SerachSectionSelect
+            label="To"
+            options={airports}
+            value={to || ''}
+            onChange={this.onChange('to')}
+          />
+          <SerachSectionInput
+            label="Depart"
+            type="date"
+            value={departDate || ''}
+            onChange={this.onChange('departDate')}
+          />
+          <SerachSectionInput
+            label="Return"
+            type="date"
+            value={returnDate || ''}
+            onChange={this.onChange('returnDate')}
+          />
 
           <Button variant="raised" color="primary" type="submit" margin="normal">
             Search
           </Button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(SearchView);
+export default withStyles(styles)(SearchView)

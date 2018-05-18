@@ -1,12 +1,12 @@
-import React from "react";
-import Path from "./Path";
+import React from "react"
+import Path from "./Path"
 
-import styles from "./Flight.css";
+import styles from "./Flight.css"
 
 const Flight = ({ flight }) => {
   const {
     price, outboundPath, inboundPath, id,
-  } = flight;
+  } = flight
   return (
     <div className={styles.flight}>
       <div className={styles.paths}>
@@ -15,7 +15,7 @@ const Flight = ({ flight }) => {
       </div>
       <div className={styles.price}>${price}</div>
     </div>
-  );
-};
+  )
+}
 
-export default Flight;
+export default Flight

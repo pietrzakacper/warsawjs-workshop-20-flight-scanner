@@ -1,10 +1,10 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import AirplanemodeActive from "@material-ui/icons/AirplanemodeActive";
+import React from "react"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import AirplanemodeActive from "@material-ui/icons/AirplanemodeActive"
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles"
 
 const styles = theme => ({
   root: {
@@ -22,7 +22,7 @@ const styles = theme => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
-});
+})
 
 const TopBar = ({ children, classes }) => (
   <AppBar position="absolute" className={classes.appBar}>
@@ -37,6 +37,6 @@ const TopBar = ({ children, classes }) => (
       </Typography>
     </Toolbar>
   </AppBar>
-);
+)
 
-export default withStyles(styles)(TopBar);
+export default withStyles(styles)(TopBar)

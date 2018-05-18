@@ -1,15 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from "react"
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles"
 
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton"
 
-import ArrowBack from "@material-ui/icons/ArrowBack";
+import ArrowBack from "@material-ui/icons/ArrowBack"
 
-import Flight from "../Flight";
-import TopBar from "../TopBar";
-import withLoading from "../WithLoading";
-import FlightsFilter from "../FlightsFilter";
+import Flight from "../Flight"
+import TopBar from "../TopBar"
+import withLoading from "../WithLoading"
+import FlightsFilterPanel from "../FlightsFilterPanel"
+import { fetchFlights } from "./index.service"
 
 const styles = theme => ({
   root: {
@@ -28,48 +29,61 @@ const styles = theme => ({
     boxSizing: "border-box",
   },
   toolbar: theme.mixins.toolbar,
-});
+})
 
 class FlightsView extends React.Component {
   state = {
     flights: [],
     flightsFetching: false,
-    filteredFlights: [],
+    filters: []
   }
 
   async componentDidMount() {
-    this.setState({
-      flightsFetching: true,
-    });
-    const url = "https://warsawjs-flights-api.herokuapp.com/flights";
-    const {
-      to, from, depart, return: returnDate,
-    } = this.props.searchData;
-
-    const result = await fetch(`${url}/${depart}/${returnDate}/${from}/${to}`).then(res => res.json());
+    const {searchData} = this.props
 
     this.setState({
-      flights: result,
-      filteredFlights: result,
-      flightsFetching: false,
-    });
+      flightsFetching: true
+    })
+
+    const flightsFetched = await fetchFlights(searchData)
+
+    const flights = flightsFetched.map(flight => ({
+        outboundTransfers: flight.outboundPath.length - 1,
+        inboundTransfers: flight.inboundPath.length - 1,
+        ...flight
+      })
+    )
+
+    this.setState({
+      flights,
+      flightsFetching: false
+    })
   }
 
-  filterFlights = (filters = []) => {
-    console.log(filters);
+  setFilters = filters => {
+    this.setState({filters})
+  }
 
-    this.setState({
-      filteredFlights: filters.reduce((prev, curr) => curr(prev), this.state.flights),
-    });
+  renderFlights() {
+    const {flights, filters} = this.state
+
+    const filteredFlights = flights.filter(
+      flight => filters.every(
+        ({propToFilter, min, max}) =>
+          min <= flight[propToFilter] &&
+          flight[propToFilter] <= max
+        )
+    )
+
+    const renderedFlights = filteredFlights.map(
+      flight => <Flight key={flight.id} flight={flight}/>
+    )
+
+    return renderedFlights
   }
 
   render() {
-    const flights = this.state.filteredFlights
-      .map(flight => <Flight key={flight.id} flight={flight} />);
-
-    const { classes } = this.props;
-
-    const Flights = withLoading((<Fragment>{flights}</Fragment>));
+    const { classes } = this.props
 
     return (
       <div className={classes.root}>
@@ -79,15 +93,15 @@ class FlightsView extends React.Component {
           </IconButton>
         </TopBar>
 
-        <FlightsFilter filterFlights={this.filterFlights} />
+        <FlightsFilterPanel setFilters={this.setFilters} />
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Flights isLoading={this.state.flightsFetching} />
+          {this.renderFlights()}
         </main>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(FlightsView);
+export default withStyles(styles)(FlightsView)

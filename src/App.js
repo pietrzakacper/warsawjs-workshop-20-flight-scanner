@@ -1,70 +1,61 @@
-import React from "react";
-import SearchView from "./SearchView/";
-import FlightsView from "./FlightsView/";
-
-/* eslint-disable spaced-comment */
+import React from "react"
+import SearchView from "./SearchView/"
+import FlightsView from "./FlightsView/"
+import { fetchAirports } from "./App.service"
 
 class App extends React.Component {
   state = {
     airports: [],
-    /*
-    searchData: {},
     view: "search",
-    /*/
-    view: "flights",
     searchData: {
-      depart: "2018-05-13",
-      return: "2018-05-15",
-      from: "WAW",
-      to: "ATL",
-    },
-    //*/
-    //*/
+      depart: null,
+      return: null,
+      from: null,
+      to: null
+    }
   }
 
   async componentDidMount() {
-    const result = await fetch("https://warsawjs-flights-api.herokuapp.com/airports").then(res => res.json());
-
-    this.setState(
-      {
-        airports: result.map(r => ({
-          code: r.code,
-          city: r.city,
-          country: r.country,
-        })),
-      },
-    );
+    this.setState({
+      airports: await fetchAirports()
+    })
   }
 
   onSearch = (searchData) => {
     this.setState({
       searchData,
-      view: "flights",
-    });
+      view: 'flights'
+    })
   }
 
   goToSearch = () => {
     this.setState({
-      view: "search",
-    });
+      view: 'search'
+    })
   }
 
   render() {
-    if (this.state.view === "search") {
-      return (
-        <SearchView
-          onSearch={this.onSearch}
-          searchData={this.state.searchData}
-          airports={this.state.airports}
-        />);
-    } else if (this.state.view === "flights") {
-      return (
-        <FlightsView searchData={this.state.searchData} goToSearch={this.goToSearch} />
-      );
-    }
+    const {airports, searchData} = this.state
 
-    return null;
+    switch(this.state.view) {
+      case 'search':
+        return (
+          <SearchView
+            onSearch={this.onSearch}
+            airports={airports}
+          />
+        )
+      case 'flights':
+        return (
+          <FlightsView
+            searchData={searchData}
+            goToSearch={this.goToSearch}
+          />
+        )
+      default:
+        return null
+    }
   }
 }
 
-export default App;
+export default App
