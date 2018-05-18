@@ -1,16 +1,16 @@
-import React from "react"
+import React from 'react'
 
-import { withStyles } from "@material-ui/core/styles"
+import { withStyles } from '@material-ui/core/styles'
 
-import Drawer from "@material-ui/core/Drawer"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import TextField from "@material-ui/core/TextField"
-import Switch from "@material-ui/core/Switch"
-import ListItemText from "@material-ui/core/ListItemText"
-import Typography from "@material-ui/core/Typography"
-import Grid from "@material-ui/core/Grid"
-import { Divider } from "@material-ui/core"
+import Drawer from '@material-ui/core/Drawer'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import TextField from '@material-ui/core/TextField'
+import Switch from '@material-ui/core/Switch'
+import ListItemText from '@material-ui/core/ListItemText'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import { Divider } from '@material-ui/core'
 
 import FlightsFilter from '../FlightsFilter'
 
@@ -18,7 +18,7 @@ const drawerWidth = 400
 
 const styles = theme => ({
   drawerPaper: {
-    position: "relative",
+    position: 'relative',
     width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
@@ -78,7 +78,7 @@ class FlightsFilterPanel extends React.Component {
 
     return (
       <Drawer
-        variant="permanent"
+        variant='permanent'
         classes={{
           paper: classes.drawerPaper,
         }}

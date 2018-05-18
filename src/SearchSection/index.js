@@ -1,11 +1,11 @@
-import React from "react"
-import TextField from "@material-ui/core/TextField"
-import MenuItem from "@material-ui/core/MenuItem"
+import React from 'react'
+import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem'
 
 export const SerachSectionInput = ({
-  onChange, value, label, type = "text",
+  onChange, value, label, type = 'text',
 }) => (
-  <div className="control column">
+  <div className='control column'>
     <TextField
       type={type}
       value={value}
@@ -15,7 +15,7 @@ export const SerachSectionInput = ({
       InputLabelProps={{
         shrink: true,
       }}
-      margin="normal"
+      margin='normal'
     />
   </div>
 )
@@ -23,10 +23,10 @@ export const SerachSectionInput = ({
 export const SerachSectionSelect = ({
   onChange, value, label, options = [],
 }) => (
-  <div className="control column">
+  <div className='control column'>
     <div>
       <TextField
-        id="select-currency-native"
+        id='select-currency-native'
         select
         label={label}
         value={value}
@@ -35,7 +35,7 @@ export const SerachSectionSelect = ({
         InputLabelProps={{
           shrink: true,
         }}
-        margin="normal"
+        margin='normal'
       >
         { options.map((opt, i) => (
           <MenuItem key={`${label}-${i}`} value={opt.code}>

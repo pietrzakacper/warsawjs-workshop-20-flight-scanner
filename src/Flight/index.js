@@ -1,7 +1,7 @@
-import React from "react"
-import Path from "./Path"
+import React from 'react'
+import Path from './Path'
 
-import styles from "./Flight.css"
+import styles from './Flight.css'
 
 const Flight = ({ flight }) => {
   const {

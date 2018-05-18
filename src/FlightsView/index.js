@@ -1,32 +1,32 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from 'react'
 
-import { withStyles } from "@material-ui/core/styles"
+import { withStyles } from '@material-ui/core/styles'
 
-import IconButton from "@material-ui/core/IconButton"
+import IconButton from '@material-ui/core/IconButton'
 
-import ArrowBack from "@material-ui/icons/ArrowBack"
+import ArrowBack from '@material-ui/icons/ArrowBack'
 
-import Flight from "../Flight"
-import TopBar from "../TopBar"
-import withLoading from "../WithLoading"
-import FlightsFilterPanel from "../FlightsFilterPanel"
-import { fetchFlights } from "./index.service"
+import Flight from '../Flight'
+import TopBar from '../TopBar'
+import withLoading from '../WithLoading'
+import FlightsFilterPanel from '../FlightsFilterPanel'
+import { fetchFlights } from './index.service'
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     zIndex: 1,
-    overflow: "hidden",
-    position: "relative",
-    display: "flex",
+    overflow: 'hidden',
+    position: 'relative',
+    display: 'flex',
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-    height: "100vh",
-    overflow: "auto",
-    boxSizing: "border-box",
+    height: '100vh',
+    overflow: 'auto',
+    boxSizing: 'border-box',
   },
   toolbar: theme.mixins.toolbar,
 })
@@ -88,7 +88,7 @@ class FlightsView extends React.Component {
     return (
       <div className={classes.root}>
         <TopBar>
-          <IconButton onClick={this.props.goToSearch} aria-label="Return" color="inherit">
+          <IconButton onClick={this.props.goToSearch} aria-label='Return' color='inherit'>
             <ArrowBack />
           </IconButton>
         </TopBar>

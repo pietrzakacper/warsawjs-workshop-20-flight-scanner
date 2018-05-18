@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react'
 
-import styles from "./Path.css"
+import styles from './Path.css'
 
 const formatTime = (time) => {
   const hour = Math.floor(+time)
   const minutes = +time - hour
 
-  const hourString = String(hour).padStart(2, "0")
-  const minutesString = String(Math.floor(minutes * 60)).padStart(2, "0")
+  const hourString = String(hour).padStart(2, '0')
+  const minutesString = String(Math.floor(minutes * 60)).padStart(2, '0')
 
   return `${hourString}:${minutesString}`
 }

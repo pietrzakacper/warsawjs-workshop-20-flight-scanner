@@ -14,7 +14,7 @@
 
 .line {
   display: flex;
-  position: relative;    
+  position: relative;
   align-items: center;
   justify-content: space-around;
   width: 100%;
@@ -25,7 +25,7 @@
 
 .line::before {
   position: absolute;
-  content: "";
+  content: '';
   left: 16px;
   right: 16px;
   display: block;

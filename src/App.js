@@ -1,12 +1,12 @@
-import React from "react"
-import SearchView from "./SearchView/"
-import FlightsView from "./FlightsView/"
-import { fetchAirports } from "./App.service"
+import React from 'react'
+import SearchView from './SearchView/'
+import FlightsView from './FlightsView/'
+import { fetchAirports } from './App.service'
 
 class App extends React.Component {
   state = {
     airports: [],
-    view: "search",
+    view: 'search',
     searchData: {
       depart: null,
       return: null,

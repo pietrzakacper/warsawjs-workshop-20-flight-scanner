@@ -1,24 +1,24 @@
-import React from "react"
+import React from 'react'
 
-import { withStyles } from "@material-ui/core/styles"
+import { withStyles } from '@material-ui/core/styles'
 
-import Grid from "@material-ui/core/Grid"
-import Button from "@material-ui/core/Button"
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 
-import TopBar from "../TopBar/"
-import { SerachSectionInput, SerachSectionSelect } from "../SearchSection/"
+import TopBar from '../TopBar/'
+import { SerachSectionInput, SerachSectionSelect } from '../SearchSection/'
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     zIndex: 1,
-    overflow: "hidden",
-    position: "relative",
-    display: "flex",
+    overflow: 'hidden',
+    position: 'relative',
+    display: 'flex',
   },
   toolbar: theme.mixins.toolbar,
   search: {
-    margin: "0 auto",
+    margin: '0 auto',
     maxWidth: 800,
     paddingTop: 16,
   },
@@ -61,33 +61,33 @@ class SearchView extends React.Component {
         <TopBar />
         <div className={classes.toolbar} />
         <form onSubmit={this.onSubmit} className={classes.search}>
-          <div className="field is-grouped" />
+          <div className='field is-grouped' />
 
           <SerachSectionSelect
-            label="From"
+            label='From'
             options={airports} value={from || ''}
             onChange={this.onChange('from')}
           />
           <SerachSectionSelect
-            label="To"
+            label='To'
             options={airports}
             value={to || ''}
             onChange={this.onChange('to')}
           />
           <SerachSectionInput
-            label="Depart"
-            type="date"
+            label='Depart'
+            type='date'
             value={departDate || ''}
             onChange={this.onChange('departDate')}
           />
           <SerachSectionInput
-            label="Return"
-            type="date"
+            label='Return'
+            type='date'
             value={returnDate || ''}
             onChange={this.onChange('returnDate')}
           />
 
-          <Button variant="raised" color="primary" type="submit" margin="normal">
+          <Button variant='raised' color='primary' type='submit' margin='normal'>
             Search
           </Button>
         </form>
