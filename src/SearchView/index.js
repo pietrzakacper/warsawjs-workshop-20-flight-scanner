@@ -6,22 +6,14 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
 import TopBar from '../TopBar/'
-import { SerachSectionInput, SerachSectionSelect } from '../SearchSection/'
+import { SearchSectionInput, SearchSectionSelect } from './SearchSection'
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-  },
-  toolbar: theme.mixins.toolbar,
+const styles = () => ({
   search: {
     margin: '0 auto',
     maxWidth: 800,
     paddingTop: 16,
-  },
+  }
 })
 
 class SearchView extends React.Component {
@@ -52,46 +44,45 @@ class SearchView extends React.Component {
   }
 
   render() {
-    const {airports} = this.props
-    const {classes} = this.props
+    const {airports, classes} = this.props
     const {from, to, departDate, returnDate} = this.state
 
     return (
       <div>
-        <TopBar />
-        <div className={classes.toolbar} />
-        <form onSubmit={this.onSubmit} className={classes.search}>
-          <div className='field is-grouped' />
+      <TopBar />
+      <form onSubmit={this.onSubmit} className={classes.search}>
+        <div className="field is-grouped" />
 
-          <SerachSectionSelect
-            label='From'
-            options={airports} value={from || ''}
-            onChange={this.onChange('from')}
-          />
-          <SerachSectionSelect
-            label='To'
-            options={airports}
-            value={to || ''}
-            onChange={this.onChange('to')}
-          />
-          <SerachSectionInput
-            label='Depart'
-            type='date'
-            value={departDate || ''}
-            onChange={this.onChange('departDate')}
-          />
-          <SerachSectionInput
-            label='Return'
-            type='date'
-            value={returnDate || ''}
-            onChange={this.onChange('returnDate')}
-          />
+        <Grid container spacing={24}>
+            <SearchSectionSelect
+              label="From"
+              options={airports}
+              value={from}
+              onChange={this.onChange('from')}
+            />
+            <SearchSectionSelect
+              label="To"
+              options={airports}
+              value={to}
+              onChange={this.onChange('to')}
+            />
+            <SearchSectionInput
+              label="Depart"
+              type="date"
+              value={departDate}
+              onChange={this.onChange('departDate')} />
+            <SearchSectionInput
+              label="Return"
+              type="date"
+              value={returnDate}
+              onChange={this.onChange('returnDate')} />
+        </Grid>
 
-          <Button variant='raised' color='primary' type='submit' margin='normal'>
-            Search
-          </Button>
-        </form>
-      </div>
+        <Button variant="raised" color="primary" type="submit" >
+          Search
+        </Button>
+      </form>
+    </div>
     )
   }
 }

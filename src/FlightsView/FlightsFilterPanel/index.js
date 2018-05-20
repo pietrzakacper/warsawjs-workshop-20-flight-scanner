@@ -4,24 +4,17 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import TextField from '@material-ui/core/TextField'
-import Switch from '@material-ui/core/Switch'
-import ListItemText from '@material-ui/core/ListItemText'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
 import { Divider } from '@material-ui/core'
 
-import FlightsFilter from '../FlightsFilter'
+import FlightsFilter from './FlightsFilter'
 
-const drawerWidth = 400
 
 const styles = theme => ({
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth,
-  },
-  toolbar: theme.mixins.toolbar,
+    width: 400,
+    marginTop: 64
+  }
 })
 
 class FlightsFilterPanel extends React.Component {
@@ -83,11 +76,9 @@ class FlightsFilterPanel extends React.Component {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.toolbar} />
         <List>
         {
-          Object.keys(this.state).map((filterName, index, {length}) => (
-            <React.Fragment>
+          Object.keys(this.state).map((filterName, index, {length}) => [
               <FlightsFilter
                 key={filterName}
                 filterLabel={this.state[filterName].label}
@@ -95,10 +86,9 @@ class FlightsFilterPanel extends React.Component {
                 max={this.state[filterName].max}
                 toggled={this.state[filterName].toggled}
                 updateFilter={this.updateFilter(filterName)}
-              />
-              {index === length - 1 && <Divider />}
-            </React.Fragment>
-          ))
+              />,
+              index === length - 1 && <Divider />
+          ])
         }
         </List>
       </Drawer>

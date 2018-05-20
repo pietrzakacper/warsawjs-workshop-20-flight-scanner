@@ -22,21 +22,25 @@ const styles = theme => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
+  toolbar: theme.mixins.toolbar
 })
 
 const TopBar = ({ children, classes }) => (
-  <AppBar position='absolute' className={classes.appBar}>
-    <Toolbar>
-      { children }
+  <React.Fragment>
+   <AppBar position='absolute' className={classes.appBar}>
+      <Toolbar>
+        { children }
 
-      <Typography variant='title' color='inherit' className={classes.menuButton}>
-        <div className={classes.plane}>
-          <AirplanemodeActive style={{ fontSize: 32 }} />
-        </div>
-        <span>FlightScanner</span>
-      </Typography>
-    </Toolbar>
-  </AppBar>
+        <Typography variant='title' color='inherit' className={classes.menuButton}>
+          <div className={classes.plane}>
+            <AirplanemodeActive style={{ fontSize: 32 }} />
+          </div>
+          <span>FlightScanner</span>
+        </Typography>
+      </Toolbar>
+    </AppBar>
+    <div className={classes.toolbar} />
+  </React.Fragment>
 )
 
 export default withStyles(styles)(TopBar)

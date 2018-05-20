@@ -3,6 +3,7 @@
 ### 0. Setup
 1. Tworzymy aplikację poprzez `npx create-react-app warsawjs-workshop-20-flights-search`
 2. Odpalamy ją za pomocą `npm start`
+3. Usuńmy zawartość katalogu src/
 
 ### 1. 	Mainframe
 1. Stworzyć główny komponent `<App />`, który wyświetla „Hello World” w `App.js`
@@ -18,23 +19,25 @@ export default class App extends React.Component {
 }
 ```
 
-3. Wyrenderować `<App />` za pomocą react-dom (`ReactDOM.render(<App />, document.getElementById("root")`)
-4. Dodać bazowe cssy (`import "./index.css"`)
+2. Wyrenderować `<App />` za pomocą react-dom (`ReactDOM.render(<App />, document.getElementById("root")`)
+3. Dodać bazowe cssy (`import "./index.css"`)
 
 ### 2. Widok wyszukiwania
 1. Stworzyć komponent `<SearchView />` w pliku `SearchView.js`
 2. Dodać w nim znacznik `form`
-3. Dodać dwa znaczniki `select`:  [Do, Z] z opcjami `WAW, ATL`
+3. Dodać dwa znaczniki `select`:  [From, To] z opcjami `WAW, JFk`
 4. Dodać dwa znaczniki `input[type="date"]` Data wylotu, Data powrotu
-5. Podpiąć pod nie metody zmieniające `state` na ich wartości
+5. Podpiąć pod nie metody zmieniające `state` na eventy onChange
 ```javascript
 class SearchView extends React.Component {
-	onToChange = (e) => this.setState({ to: e.target.value });
-	render() { return (
-		<div>
-			<input onChange={this.onToChange} />
-		</div>
-	) }
+	onToChange = (e) => this.setState({ to: e.target.value })
+	render() {
+    	return (
+			<form>
+				<input onChange={this.onToChange} />
+			</form>
+		)
+    }
 }
 ```
 6. Ustalić wartość `inputów` na wartości ze `state`
@@ -77,7 +80,7 @@ export default class FlightsFilter extends React.Component {
 		//...
 	}
 	// ...
-	
+
 	render() {
 		return (<input type="number" ref={this.priceMin} />);
 	}

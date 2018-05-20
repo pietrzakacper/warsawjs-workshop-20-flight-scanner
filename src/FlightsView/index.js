@@ -6,10 +6,9 @@ import IconButton from '@material-ui/core/IconButton'
 
 import ArrowBack from '@material-ui/icons/ArrowBack'
 
-import Flight from '../Flight'
+import Flight from './Flight'
 import TopBar from '../TopBar'
-import withLoading from '../WithLoading'
-import FlightsFilterPanel from '../FlightsFilterPanel'
+import FlightsFilterPanel from './FlightsFilterPanel'
 import { fetchFlights } from './index.service'
 
 const styles = theme => ({
@@ -27,23 +26,18 @@ const styles = theme => ({
     height: '100vh',
     overflow: 'auto',
     boxSizing: 'border-box',
-  },
-  toolbar: theme.mixins.toolbar,
+    marginTop: 64
+  }
 })
 
 class FlightsView extends React.Component {
   state = {
     flights: [],
-    flightsFetching: false,
     filters: []
   }
 
   async componentDidMount() {
     const {searchData} = this.props
-
-    this.setState({
-      flightsFetching: true
-    })
 
     const flightsFetched = await fetchFlights(searchData)
 
@@ -55,8 +49,7 @@ class FlightsView extends React.Component {
     )
 
     this.setState({
-      flights,
-      flightsFetching: false
+      flights
     })
   }
 
@@ -83,12 +76,12 @@ class FlightsView extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, goToSearch } = this.props
 
     return (
       <div className={classes.root}>
         <TopBar>
-          <IconButton onClick={this.props.goToSearch} aria-label='Return' color='inherit'>
+          <IconButton onClick={goToSearch} aria-label='Return' color='inherit'>
             <ArrowBack />
           </IconButton>
         </TopBar>
@@ -96,7 +89,6 @@ class FlightsView extends React.Component {
         <FlightsFilterPanel setFilters={this.setFilters} />
 
         <main className={classes.content}>
-          <div className={classes.toolbar} />
           {this.renderFlights()}
         </main>
       </div>
